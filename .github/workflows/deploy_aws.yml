@@ -22,19 +22,25 @@ jobs:
         cache: maven
     - name: Build with Maven or gradle
       working-directory: ./utils
-      run: |
-        echo "Build with: ${{ github.event.inputs.buildWith }} " 
-        if  ${{ github.event.inputs.buildWith }} == "gradle"
-        then
-          gradle build --stacktrace
-        else 
-          mvn -B package --file pom.xml
-        fi
+      run: mvn -B package --file pom.xml
     - name: Upload Maven build artifact
       uses: actions/upload-artifact@v2
       with:
         name: BuildersUtil-1.0-SNAPSHOT.jar
         path: .
+        
+  deploy:
+    needs: [continuous]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: "simpleappcicd" #Must be unique in Heroku
+        heroku_email: ${{secrets.HEROKU_EMAIL}}
+      
 
   
   
