@@ -30,7 +30,7 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: |
-        if ${{ github.event.inputs.buildWith}} == 'gradle'
+        if ${{ github.event.inputs.buildWith }} == 'gradle'
         then
           gradle build
         else 
