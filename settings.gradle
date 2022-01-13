@@ -1,0 +1,2 @@
+rootProject.name = 'epam-project'
+include 'admin', 'services', 'utils', 'web'
