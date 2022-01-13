@@ -33,6 +33,7 @@ jobs:
   continuous:
    runs-on: ubuntu-latest
    steps:
+    - uses: actions/checkout@v2
     - name: Run cron
       run: |
         echo "Run build every night" 
