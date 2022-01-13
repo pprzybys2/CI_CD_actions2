@@ -34,7 +34,7 @@ jobs:
         echo "Build with: ${{ github.event.inputs.buildWith }} " 
         if  ${{ github.event.inputs.buildWith }} == "gradle"
         then
-          gradle build
+          gradle build --stacktrace
         else 
           mvn -B package --file pom.xml
         fi
