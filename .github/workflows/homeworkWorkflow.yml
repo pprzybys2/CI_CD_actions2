@@ -33,9 +33,10 @@ jobs:
         echo "Build with: ${{ github.event.inputs.buildWith }} " 
         if  ${{ github.event.inputs.buildWith }} == "gradle"
         then
-        gradle build
+          gradle build
         else 
-        mvn -B package --file utils/pom.xml
+          mvn -B package --file utils/pom.xml
+        fi
     - name: Upload Maven build artifact
       uses: actions/upload-artifact@v2
       with:
