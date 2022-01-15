@@ -2,8 +2,8 @@ name: Deploy to Amazon ECS
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 2 * * *'
+#   schedule:
+#     - cron: '0 2 * * *'
 jobs:
   continuous:
    runs-on: ubuntu-latest
